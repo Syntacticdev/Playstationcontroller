@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax"
+import SectionOne from './components/SectionOne';
+import SectionTwo from './components/SectionTwo';
+import SectionThree from "./components/SectionThree";
+
 
 function App() {
+  const ref = useRef()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Parallax pages={3} ref={ref} style={{ background: "linear-gradient(#e66465, #9198e5)" }}>
+        <ParallaxLayer offset={0} speed={1}>
+          <SectionOne />
+        </ParallaxLayer>
+        <ParallaxLayer offset={1} speed={2}>
+          <SectionTwo />
+        </ParallaxLayer>
+        <ParallaxLayer offset={2} speed={3}>
+          <SectionThree />
+        </ParallaxLayer>
+      </Parallax>
     </div>
   );
 }
 
 export default App;
+
